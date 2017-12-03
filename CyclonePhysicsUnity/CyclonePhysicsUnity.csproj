@@ -223,7 +223,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Engine\Core\Core_Const.cs" />
     <Compile Include="Assets\Scripts\Engine\Core\Core_Vector3.cs" />
+    <Compile Include="Assets\Scripts\Engine\GroundContacts.cs" />
     <Compile Include="Assets\Scripts\Engine\Particle.cs" />
+    <Compile Include="Assets\Scripts\Engine\ParticleContact.cs" />
+    <Compile Include="Assets\Scripts\Engine\ParticleContactGenerator.cs" />
+    <Compile Include="Assets\Scripts\Engine\ParticleContactResolver.cs" />
+    <Compile Include="Assets\Scripts\Engine\ParticleForceGenerator.cs" />
+    <Compile Include="Assets\Scripts\Engine\ParticleForceRegistry.cs" />
+    <Compile Include="Assets\Scripts\Engine\ParticleWorld.cs" />
     <Compile Include="Assets\Scripts\Math\Fix64.cs" />
     <Compile Include="Assets\Scripts\Math\Fix64AcosLut.cs" />
     <Compile Include="Assets\Scripts\Math\Fix64SinLut.cs" />

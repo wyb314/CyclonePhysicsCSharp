@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TrueSync;
-using UnityEngine;
 
 
 namespace CyclonePhysics
@@ -25,6 +24,20 @@ namespace CyclonePhysics
 
         public void integrate(FP duration)
         {
+            if (inverseMass <= 0)
+            {
+                return;
+            }
+
+            TSVector movement = this.velocity*duration;
+            this.position += movement;
+
+            TSVector resultingAcc = acceleration;
+            resultingAcc += this.forceAccum*this.inverseMass;
+
+            this.velocity *= TSMath.Clamp(FP.ONE - duration* this.damping, 0.0f, 1.0f);
+
+            this.clearAccumulator();
         }
 
 
@@ -110,29 +123,30 @@ namespace CyclonePhysics
 
         public void setAcceleration(TSVector acceleration)
         {
-            
+            this.acceleration = acceleration;
         }
 
         public void setAcceleration(FP x, FP y, FP z)
         {
-
+            TSVector acceleration = new TSVector(x,y,z);
+            this.acceleration = acceleration;
         }
 
 
-        public void getAcceleration(TSVector acceleration)
+        public TSVector getAcceleration()
         {
-            
+            return this.acceleration;
         }
 
 
-        public TSVector getAcceleration() { }
-
-
-        public void clearAccumulator() { }
+        public void clearAccumulator()
+        {
+            this.forceAccum = TSVector.zero;
+        }
 
         public void addForce(TSVector force)
         {
-            
+            this.forceAccum += force;
         }
     }
 
